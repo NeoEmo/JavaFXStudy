@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fxstudy.javafxstudy.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="mainTitle" text="Hello world!" />
+    <Label fx:id="welcomeText" text="Suka Blyad" />
+    <Label text="This is Simple Application" />
+    <TilePane alignment="CENTER" hgap="10" orientation="VERTICAL" prefHeight="0.0" prefWidth="640.0" vgap="10">
+        <ProgressBar fx:id="Progression" prefWidth="200.0" progress="0.0" />
+      <Label fx:id="todayIS" />
+      <Button mnemonicParsing="false" onAction="#setTodayIS" text="Обновить время" />
+      <Hyperlink text="Ссылка на автора" onAction="#openLink"/>
+    </TilePane>
+    <Button onAction="#onHelloButtonClick" prefHeight="50.0" prefWidth="150.0" text="Hello!" />
+    <HBox alignment="BOTTOM_CENTER" spacing="20.0">
+        <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+        </padding>
+        <Button onAction="#holyShit">1</Button>
+        <Button onAction="#multiKill">2</Button>
+        <Button onAction="#godLike">3</Button>
+        <Button onAction="#monsterKill">4</Button>
+    </HBox>
+    <Button fx:id="mainButton" onAction="#buttonClicked" prefHeight="50.0" prefWidth="150.0" text="Click me!" />
+    <StackPane alignment="BOTTOM_CENTER">
+        <ImageView>
+            <Image url="@monkey-134.gif" />
+        </ImageView>
+        <Button alignment="TOP_CENTER" onAction="#monkey" rotate="-6.3">
+            <StackPane.margin>
+                <Insets bottom="270.0" right="200.0" />
+            </StackPane.margin>
+            Эта шняга чешется!
+        </Button>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+    </StackPane>
+    <FlowPane alignment="CENTER" hgap="10" orientation="VERTICAL" prefHeight="0.0" prefWidth="640.0" vgap="10">
+        <CheckBox fx:id="godMode" mnemonicParsing="false" onAction="#checksDebug" text="РЕЖИМ БОГА" />
+        <CheckBox fx:id="debagMode" mnemonicParsing="false" onAction="#checksDebug" text="ДЕБАГ РЕЖИМ" />
+        <CheckBox fx:id="moreMoneyMode" mnemonicParsing="false" onAction="#checksMoreMoney" text="МОД МНОГО ДЕНЕГ" />
+        <CheckBox fx:id="idiotsMode" mnemonicParsing="false" onAction="#checksIdiots" text="РЕЖИМ ПОИСКА ПИДОРАСОВ" />
+    </FlowPane>
+</VBox>
