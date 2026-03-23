@@ -28,12 +28,6 @@ public class HelloApplication extends Application {
         stage.setTitle("Simple Application");
         stage.setScene(scene);
         stage.show();
-        HBox hBox = new HBox();
-        Button button1 = new Button("1");
-        Button button2 = new Button("2");
-        Button button3 = new Button("3");
-        Button button4 = new Button("4");
-        hBox.getChildren().addAll(button1,button2,button3,button4);
     }
 
     public static HostServices getAppHostServices() {

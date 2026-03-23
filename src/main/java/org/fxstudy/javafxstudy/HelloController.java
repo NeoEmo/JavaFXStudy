@@ -8,6 +8,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.time.LocalDateTime;
+
 
 public class HelloController {
     @FXML
@@ -16,7 +18,7 @@ public class HelloController {
     public ProgressBar Progression;
     public Label todayIS;
     public CheckBox godMode;
-    public CheckBox debagMode;
+    public CheckBox debugMode;
     public CheckBox moreMoneyMode;
     public CheckBox idiotsMode;
     public Label welcomeText;
@@ -63,24 +65,20 @@ public class HelloController {
 
     @FXML
     protected void setTodayIS() {
-        int Year = java.time.LocalDateTime.now().getYear();
-        int Month = java.time.LocalDateTime.now().getMonth().getValue();
-        int Day = java.time.LocalDateTime.now().getDayOfMonth();
-        int Hour = java.time.LocalDateTime.now().getHour();
-        int Minutes = java.time.LocalDateTime.now().getMinute();
-        String currentDate;
-        if (Month < 10) {
-            currentDate = "Сегодня " + Day + ".0" + Month + "." + Year + " , " + Hour + ":" + Minutes;
-        } else {
-            currentDate = "Сегодня " + Day + "." + Month + "." + Year + " , " + Hour + ":" + Minutes;
-        }
+        LocalDateTime now = LocalDateTime.now();
+        int year = now.getYear();
+        int month = now.getMonthValue();
+        int day = now.getDayOfMonth();
+        int hour = now.getHour();
+        int minutes = now.getMinute();
+        String currentDate = String.format("Сегодня %d.%02d.%d , %d:%d", day, month, year, hour, minutes);
         todayIS.setText(currentDate);
     }
 
     @FXML
     protected void checksDebug() {
         int power = godMode.isSelected() ? 99 : 1;
-        if (debagMode.isSelected()) {
+        if (debugMode.isSelected()) {
             welcomeText.setText("РЕЖИМ РАЗРАБОТЧИКА ВКЛЮЧЕН! Сейчас power - " + power);
         } else {
             welcomeText.setText("Suka Blyad");
@@ -107,76 +105,48 @@ public class HelloController {
 
     @FXML
     protected void monsterKill() {
-        try {
-            String soundPath = getClass()
-                    .getResource("/org/fxstudy/javafxstudy/MonsterKill.mp3")
-                    .toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/MonsterKill.mp3").toExternalForm();
+            audio(soundPath);
     }
 
     @FXML
     protected void godLike() {
-        try {
-            String soundPath = getClass()
-                    .getResource("/org/fxstudy/javafxstudy/f_godlike.mp3")
-                    .toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/f_godlike.mp3").toExternalForm();
+            audio(soundPath);
     }
 
     @FXML
     protected void multiKill() {
-        try {
-            String soundPath = getClass()
-                    .getResource("/org/fxstudy/javafxstudy/multi-kill.mp3")
-                    .toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/multi-kill.mp3").toExternalForm();
+            audio(soundPath);
     }
 
     @FXML
     protected void holyShit() {
-        try {
-            String soundPath = getClass()
-                    .getResource("/org/fxstudy/javafxstudy/holy-shit.mp3")
-                    .toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/holy-shit.mp3").toExternalForm();
+        audio(soundPath);
     }
 
     @FXML
     protected void monkey() {
-        try {
-            String soundPath = getClass()
-                    .getResource("/org/fxstudy/javafxstudy/monnkey-screeamm.mp3")
-                    .toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/monnkey-screeamm.mp3").toExternalForm();
+        audio(soundPath);
     }
 
     @FXML
     protected void openLink() {
         HelloApplication.getAppHostServices().showDocument("https://github.com/NeoEmo");
+    }
+
+    @FXML
+    protected void audio(String soundPath) {
+        try {
+            Media sound = new Media(soundPath);
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
