@@ -4,13 +4,12 @@ import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
     private static HostServices hostServices;
@@ -23,7 +22,7 @@ public class HelloApplication extends Application {
 
         InputStream iconStream = getClass().getResourceAsStream("/org/fxstudy/javafxstudy/icon.png");
 
-        Image image = new Image(iconStream);
+        Image image = new Image(Objects.requireNonNull(iconStream));
         stage.getIcons().add(image);
         stage.setTitle("Simple Application");
         stage.setScene(scene);

@@ -46,7 +46,7 @@
     </StackPane>
     <FlowPane alignment="CENTER" hgap="10" orientation="VERTICAL" prefHeight="0.0" prefWidth="640.0" vgap="10">
         <CheckBox fx:id="godMode" mnemonicParsing="false" onAction="#checksDebug" text="РЕЖИМ БОГА" />
-        <CheckBox fx:id="debagMode" mnemonicParsing="false" onAction="#checksDebug" text="ДЕБАГ РЕЖИМ" />
+        <CheckBox fx:id="debugMode" mnemonicParsing="false" onAction="#checksDebug" text="ДЕБАГ РЕЖИМ" />
         <CheckBox fx:id="moreMoneyMode" mnemonicParsing="false" onAction="#checksMoreMoney" text="МОД МНОГО ДЕНЕГ" />
         <CheckBox fx:id="idiotsMode" mnemonicParsing="false" onAction="#checksIdiots" text="РЕЖИМ ПОИСКА ПИДОРАСОВ" />
     </FlowPane>

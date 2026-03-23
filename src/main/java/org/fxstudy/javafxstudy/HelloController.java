@@ -9,9 +9,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class HelloController {
@@ -148,7 +148,9 @@ public class HelloController {
     private void playSound(String fileName) {
         MediaPlayer mediaPlayer = player.get(fileName);
         if (mediaPlayer == null) {
-            String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/" + fileName).toExternalForm();
+            String soundPath = Objects.requireNonNull(getClass()
+                    .getResource("/org/fxstudy/javafxstudy/" + fileName))
+                    .toExternalForm();
             Media sound = new Media(soundPath);
             mediaPlayer = new MediaPlayer(sound);
             player.put(fileName, mediaPlayer);
