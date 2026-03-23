@@ -10,6 +10,7 @@ import javafx.scene.media.MediaPlayer;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -25,7 +26,13 @@ public class HelloController {
     public CheckBox idiotsMode;
     public Label welcomeText;
     private int count = 1;
-    private final Map<String, MediaPlayer> player = new HashMap<>();
+    private final Map<String, MediaPlayer> player = new LinkedHashMap<>(16, 0.75f, true) {
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<String, MediaPlayer> eldest) {
+            return size()>10;
+        }
+    };
+
 
 
     @FXML
