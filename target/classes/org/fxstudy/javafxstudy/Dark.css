@@ -1,0 +1,47 @@
+.root {
+    -fx-background-color: #2b2b2b;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 12px;
+}
+
+.label {
+    -fx-text-fill: #e0e0e0;
+}
+
+.button {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 5 10 5 10;
+}
+
+.button:hover {
+    -fx-background-color: #5a5e60;
+}
+
+.progress-bar {
+    -fx-accent: #76b900;
+    -fx-control-inner-background: #3c3f41;
+}
+
+.check-box {
+    -fx-text-fill: #e0e0e0;
+}
+
+.check-box .box {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: #777777;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #76b900;
+}
+
+.hyperlink {
+    -fx-text-fill: #76b900;
+    -fx-border-color: transparent;
+}
+.hyperlink:hover {
+    -fx-underline: true;
+}

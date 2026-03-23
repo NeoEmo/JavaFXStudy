@@ -16,8 +16,9 @@
     <TilePane alignment="CENTER" hgap="10" orientation="VERTICAL" prefHeight="0.0" prefWidth="640.0" vgap="10">
         <ProgressBar fx:id="Progression" prefWidth="200.0" progress="0.0" />
       <Label fx:id="todayIS" />
-      <Button mnemonicParsing="false" onAction="#setTodayIS" text="Обновить время" />
-      <Hyperlink text="Ссылка на автора" onAction="#openLink"/>
+      <Button fx:id="timeButton" mnemonicParsing="false" onAction="#setTodayIS" text="Показать время" />
+      <Button mnemonicParsing="false" text="Сменить тему" onAction="#toggleTheme"/>
+      <Hyperlink onAction="#openLink" text="Ссылка на автора" />
     </TilePane>
     <Button onAction="#onHelloButtonClick" prefHeight="50.0" prefWidth="150.0" text="Hello!" />
     <HBox alignment="BOTTOM_CENTER" spacing="20.0">

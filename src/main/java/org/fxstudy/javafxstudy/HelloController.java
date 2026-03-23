@@ -1,6 +1,8 @@
 package org.fxstudy.javafxstudy;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Observable;
 
 
 public class HelloController {
@@ -25,6 +28,7 @@ public class HelloController {
     public CheckBox moreMoneyMode;
     public CheckBox idiotsMode;
     public Label welcomeText;
+    public Button timeButton;
     private int count = 1;
     private final Map<String, MediaPlayer> player = new LinkedHashMap<>(16, 0.75f, true) {
         @Override
@@ -84,6 +88,7 @@ public class HelloController {
         int minutes = now.getMinute();
         String currentDate = String.format("Сегодня %d.%02d.%d , %d:%d", day, month, year, hour, minutes);
         todayIS.setText(currentDate);
+        timeButton.setText("Обновить время");
     }
 
     @FXML
@@ -157,5 +162,16 @@ public class HelloController {
         }
         mediaPlayer.stop();
         mediaPlayer.play();
+    }
+
+    @FXML
+    private void toggleTheme() {
+        Scene scene = mainButton.getScene();
+        ObservableList<String> styleSheets = scene.getStylesheets();
+        if (styleSheets.get(0).contains("Light.css")) {
+            styleSheets.set(0, getClass().getResource("/org/fxstudy/javafxstudy/Dark.css").toExternalForm());
+        } else {
+            styleSheets.set(0, getClass().getResource("/org/fxstudy/javafxstudy/Light.css").toExternalForm());
+        }
     }
 }

@@ -19,6 +19,7 @@ public class HelloApplication extends Application {
         hostServices = getHostServices();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("/org/fxstudy/javafxstudy/Light.css").toExternalForm());
 
         InputStream iconStream = getClass().getResourceAsStream("/org/fxstudy/javafxstudy/icon.png");
 
