@@ -9,6 +9,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class HelloController {
@@ -23,6 +25,8 @@ public class HelloController {
     public CheckBox idiotsMode;
     public Label welcomeText;
     private int count = 1;
+    private final Map<String, MediaPlayer> player = new HashMap<>();
+
 
     @FXML
     protected void onHelloButtonClick() {
@@ -105,32 +109,27 @@ public class HelloController {
 
     @FXML
     protected void monsterKill() {
-            String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/MonsterKill.mp3").toExternalForm();
-            audio(soundPath);
+        playSound("MonsterKill.mp3");
     }
 
     @FXML
     protected void godLike() {
-            String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/f_godlike.mp3").toExternalForm();
-            audio(soundPath);
+        playSound("f_godlike.mp3");
     }
 
     @FXML
     protected void multiKill() {
-            String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/multi-kill.mp3").toExternalForm();
-            audio(soundPath);
+        playSound("multi-kill.mp3");
     }
 
     @FXML
     protected void holyShit() {
-        String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/holy-shit.mp3").toExternalForm();
-        audio(soundPath);
+        playSound("holy-shit.mp3");
     }
 
     @FXML
     protected void monkey() {
-        String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/monnkey-screeamm.mp3").toExternalForm();
-        audio(soundPath);
+        playSound("monnkey-screeamm.mp3");
     }
 
     @FXML
@@ -139,14 +138,15 @@ public class HelloController {
     }
 
     @FXML
-    protected void audio(String soundPath) {
-        try {
+    private void playSound(String fileName) {
+        MediaPlayer mediaPlayer = player.get(fileName);
+        if (mediaPlayer == null) {
+            String soundPath = getClass().getResource("/org/fxstudy/javafxstudy/" + fileName).toExternalForm();
             Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            e.printStackTrace();
+            mediaPlayer = new MediaPlayer(sound);
+            player.put(fileName, mediaPlayer);
         }
-
+        mediaPlayer.stop();
+        mediaPlayer.play();
     }
 }
